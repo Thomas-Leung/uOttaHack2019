@@ -28,7 +28,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatButtonModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
     LayoutModule,
     MatToolbarModule,
     MatSidenavModule,

@@ -1,5 +1,11 @@
-.message-line{
-    width: 100%;
-    margin-bottom: 0.5em;
-    border-width: 2px;
-}   
+.message {
+    position: absolute;
+    display: inline-block;
+    bottom: 0px;
+    padding-left:1rem;
+    width:100%;
+}
+mat-form-field {
+    width: 90%;
+    padding-right:1rem;
+}
