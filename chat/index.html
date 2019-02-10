@@ -126,8 +126,14 @@ document.getElementById("main").style.marginLeft= "0";
                 });
 
                 socket.on('new message', function (data) {
+                    
+                    if (data.toxic == "true") {
+                        
+                        alert("I think you said something inappropriate");
+                    } else {
                     $chat.append(`<div class="well"><strong>` + data.user + `: </strong>` + data.msg +
                         `</div>`);
+                    }
                 })
 
                 $userForm.submit(function (e) {
