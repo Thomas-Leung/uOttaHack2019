@@ -12,6 +12,7 @@
     color: #fff;
     font-family: arial;
     position: relative;
+    border-radius: 25px;
   }
   
   .sb1:before {
@@ -23,7 +24,7 @@
     border-right: 10px solid transparent;
     border-top: 10px solid #00bfb6;
     border-bottom: 10px solid transparent;
-    right: -19px;
+    right: -12px;
     top: 6px;
   }
   

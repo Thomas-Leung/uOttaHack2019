@@ -61,6 +61,7 @@ export class MessageComponent implements OnInit {
 
         this.messagingService.sendBully.next(realBully);
         this.messagingService.messageSent.next(this.message);
+        this.message = ' ';
 
         // const firstValue = payloads[1];
         // const secondValue = payloads[2];
