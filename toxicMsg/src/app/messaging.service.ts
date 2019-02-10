@@ -12,6 +12,8 @@ export class MessagingService {
 
   messageSent = new Subject();
   messageToArray = new Subject();
+  sendBully = new Subject();
+
 
   constructor() { }
 

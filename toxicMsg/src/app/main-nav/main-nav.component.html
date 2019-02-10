@@ -6,7 +6,7 @@
         [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
         [mode]="(isHandset$ | async) ? 'over' : 'side'"
         [opened]="!(isHandset$ | async)">
-      <mat-toolbar>Menu</mat-toolbar>
+      <mat-toolbar>Friends</mat-toolbar>
       <mat-nav-list>
         <a mat-list-item href="#">David Hew-wing</a>
         <a mat-list-item href="#">Thomas Leung</a>
@@ -24,7 +24,7 @@
   <!-- *ngIf="isHandset$ | async" -->
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <span>Insert Title Here....</span>
+        <span>SafeChat</span>
       </mat-toolbar>
       <!-- Add Content Here -->
       <ng-content></ng-content>
