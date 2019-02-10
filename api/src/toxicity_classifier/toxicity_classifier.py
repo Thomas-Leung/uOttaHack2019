@@ -27,8 +27,6 @@ def get_prediction():
   else:
     content = ""
     return "No message passed"
-  
-  prediction_client = automl.PredictionServiceClient()
 
   results = pool.map(predict, model_ids)
 
@@ -36,7 +34,8 @@ def get_prediction():
 
 def predict(model_id):
   global project_id
+  prediction_client = automl.PredictionServiceClient()
   name = 'projects/{}/locations/us-central1/models/{}'.format(project_id, model_id)
   payload = {'text_snippet': {'content': content, 'mime_type': 'text/plain' }}
   params = {}
-  return get_prediction(content, project_id, model_id)
+  return prediction_client.predict(name, payload, params)

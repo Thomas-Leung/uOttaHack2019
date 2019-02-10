@@ -47,18 +47,3 @@ def get_sentiment():
     res["score"] = sentiment.score
     res["magnitude"] = sentiment.magnitude
     return json.dumps(res)
-
-# def sample_analyze_sentiment(client, content):
-
-#     content = 'Your text to analyze, e.g. Hello, world!'
-
-#     if isinstance(content, six.binary_type):
-#         content = content.decode('utf-8')
-
-#     type_ = enums.Document.Type.PLAIN_TEXT
-#     document = {'type': type_, 'content': content}
-
-#     response = client.analyze_sentiment(document)
-#     sentiment = response.document_sentiment
-#     print('Score: {}'.format(sentiment.score))
-#     print('Magnitude: {}'.format(sentiment.magnitude))
