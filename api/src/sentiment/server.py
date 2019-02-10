@@ -9,7 +9,7 @@ from google.cloud.language_v1 import enums
 import six
 
 # flask server
-from flask import Flask
+from flask import Flask, json, request
 app = Flask(__name__)
 
 
@@ -29,19 +29,36 @@ class SAClient:
 
 sa = SAClient()
 
-@app.route('/')
-def get_sentiment(content):
+@app.route('/sentiment', methods=['POST'])
+def get_sentiment():
 
-    if isinstance(content, six.binary_type):
-        content = content.decode('utf-8')
-    
+    if request.headers["Content-Type"] == "application/json":
+        content = request.json["message"]
+    else:
+        return "No message passed"
+
     type_ = enums.Document.Type.PLAIN_TEXT
     document = {'type': type_, 'content': content}
 
-    response = client.analyze_sentiment(document)
+    response = sa.getInstance().analyze_sentiment(document)
     sentiment = response.document_sentiment
 
-    response = {}
-    response["score"] = sentiment.score
-    response["magnitude"] = sentiment.magnitude
-    return response
+    res = {}
+    res["score"] = sentiment.score
+    res["magnitude"] = sentiment.magnitude
+    return json.dumps(res)
+
+# def sample_analyze_sentiment(client, content):
+
+#     content = 'Your text to analyze, e.g. Hello, world!'
+
+#     if isinstance(content, six.binary_type):
+#         content = content.decode('utf-8')
+
+#     type_ = enums.Document.Type.PLAIN_TEXT
+#     document = {'type': type_, 'content': content}
+
+#     response = client.analyze_sentiment(document)
+#     sentiment = response.document_sentiment
+#     print('Score: {}'.format(sentiment.score))
+#     print('Magnitude: {}'.format(sentiment.magnitude))
