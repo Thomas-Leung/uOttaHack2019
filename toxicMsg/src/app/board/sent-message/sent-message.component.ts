@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessagingService } from 'src/app/messaging.service';
 
 @Component({
   selector: 'app-sent-message',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SentMessageComponent implements OnInit {
 
-  constructor() { }
+  message: string;
+  firstMessage = true;
+
+  constructor(private msgService: MessagingService) { }
 
   ngOnInit() {
+    this.msgService.messageSent.subscribe((msg: string) => {
+      this.firstMessage = false;
+    });
   }
 
 }
