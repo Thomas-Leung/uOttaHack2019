@@ -1,3 +1,5 @@
+var axios = require('axios');
+
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
@@ -47,4 +49,18 @@ io.sockets.on('connection', function (socket) {
     function updateUsernames() {
         io.sockets.emit('get users', users);
     }
+
+    const Url ='http://35.237.196.72/message';
+    const user={
+        name:"Said"
+    }
+    axios({
+        method: 'post',
+        url: Url,
+        data: {
+            user
+        }
+    })
+    .then(data=>console.log(data))
+    .catch(err=>console.log(err))
 });
