@@ -10,7 +10,7 @@
 </div> -->
 <div class="message">
 <mat-form-field >
-  <input matInput placeholder="Type a message...">
-  </mat-form-field>
-  <button mat-button class="">Send</button>
+  <input matInput (keyup.enter)="onSendMessage()" placeholder="Type a message..." [(ngModel)]="message">
+</mat-form-field>
+  <button mat-button #field (click)="onSendMessage()">Send</button>
 </div>
