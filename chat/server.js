@@ -33,13 +33,27 @@ io.sockets.on('connection', function (socket) {
     });
 
     // Send Message
-    socket.on('send message', function(data) {
+    socket.on('send message', function (data) {
+        // No BULLY
+        const Url = 'http://35.237.196.72/message';
+        const message = data
+        axios({
+                method: 'post',
+                url: Url,
+                data: { message }
+            })
+
+            .then(response => console.log(response.data))
+            .catch(err => console.log(err))
         // console.log(data);
-        io.sockets.emit("new message", { msg: data, user: socket.username });
+        io.sockets.emit("new message", {
+            msg: data,
+            user: socket.username
+        });
     });
 
     // New User 
-    socket.on('new user', function(data, callback) {
+    socket.on('new user', function (data, callback) {
         callback(true);
         socket.username = data;
         users.push(socket.username);
@@ -50,17 +64,4 @@ io.sockets.on('connection', function (socket) {
         io.sockets.emit('get users', users);
     }
 
-    const Url ='http://35.237.196.72/message';
-    const user={
-        name:"Said"
-    }
-    axios({
-        method: 'post',
-        url: Url,
-        data: {
-            user
-        }
-    })
-    .then(data=>console.log(data))
-    .catch(err=>console.log(err))
 });
